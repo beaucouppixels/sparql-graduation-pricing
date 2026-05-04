@@ -702,6 +702,29 @@
     background-position: right 16px center;
     padding-right: 40px;
   }
+  
+  /* Make date input larger and more clickable */
+  .form-group input[type="date"] {
+    cursor: pointer;
+    padding: 16px 50px 16px 16px;
+    font-size: 1rem;
+    min-height: 52px;
+    position: relative;
+  }
+  .form-group input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    right: 10px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    filter: invert(72%) sepia(15%) saturate(694%) hue-rotate(359deg) brightness(94%) contrast(89%);
+  }
+  .form-group input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+    transform: scale(1.15);
+  }
 
   .form-submit {
     width: 100%;
@@ -821,7 +844,7 @@
 
     <div class="eyebrow">The Collection · 2026</div>
     <h1 class="title">Graduation <em>Sessions</em></h1>
-    <p class="tagline">Where your milestone meets luxury.</p>
+    <p class="tagline">The work is done. Now, the portrait.</p>
 
     <div class="scroll-cue">Explore</div>
   </header>
@@ -951,7 +974,7 @@
     <div class="container">
       <h2>Your moment, <em>immortalized</em>.</h2>
       <p>Limited dates available throughout graduation season. Reserve your session and step into the frame.</p>
-      <a href="#book" class="btn-luxe" id="openModal">Begin Your Session</a>
+      <a href="#book" class="btn-luxe" id="openModal">Book Your Session</a>
     </div>
   </section>
 
@@ -976,12 +999,12 @@
 
         <div class="form-group">
           <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" required>
+          <input type="email" id="email" name="email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" title="Please enter a valid email address" placeholder="you@example.com" required>
         </div>
 
         <div class="form-group">
           <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" name="phone" required>
+          <input type="tel" id="phone" name="phone" pattern="[0-9\s\-\(\)\+\.]{10,}" title="Please enter a valid phone number (at least 10 digits)" placeholder="(555) 123-4567" required>
         </div>
 
         <div class="form-group">
@@ -997,7 +1020,7 @@
 
         <div class="form-group">
           <label for="dates">Preferred Date(s)</label>
-          <textarea id="dates" name="dates" placeholder="e.g., May 15-17, 2026 or flexible" required></textarea>
+          <input type="date" id="dates" name="dates" min="2026-05-05" required>
         </div>
 
         <button type="submit" class="form-submit">Send Inquiry</button>
