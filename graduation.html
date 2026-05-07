@@ -158,8 +158,14 @@
     text-align: center;
     margin-bottom: 60px;
     opacity: 0;
-    animation: fadeInUp 1s ease-out 0s forwards;
-    will-change: transform, opacity;
+    animation: fadeInUp 1s ease-out 0.3s forwards;
+  }
+  .logo-container a {
+    display: inline-block;
+    filter: drop-shadow(0 8px 35px rgba(201, 169, 106, 0.5));
+  }
+  .logo-container a:hover {
+    filter: drop-shadow(0 10px 50px rgba(201, 169, 106, 0.7));
   }
   .logo {
     max-width: 700px;
