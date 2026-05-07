@@ -1,0 +1,519 @@
+/* ===================================================================== */
+/* SPARQL PHOTOGRAPHY - LUXURY SMUGMUG THEME                             */
+/* Matches the aesthetic of beaucouppixels.github.io/sparql-graduation-pricing */
+/* ===================================================================== */
+
+/* ===================================== */
+/* Hide "Add to Cart" Button            */
+/* ===================================== */
+
+.sm-gallery-buymenu {
+  display: none !important;
+}
+
+/* ===================================== */
+/* Color Variables (Pricing Page Match) */
+/* ===================================== */
+
+:root {
+  --bg-deep: #0a0908;
+  --bg-soft: #14110f;
+  --ink: #f4ede4;
+  --ink-soft: #c9c0b4;
+  --ink-muted: #847d72;
+  --gold: #c9a96a;
+  --gold-light: #e6cf95;
+  --gold-deep: #8a7340;
+}
+
+/* ===================================== */
+/* Global Luxury Background              */
+/* ===================================== */
+
+body,
+.sm-page,
+.sm-page-layout,
+.sm-user-ui {
+  background: #0a0908 !important;
+  color: #f4ede4 !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* Subtle vignette effect */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at top, rgba(201, 169, 106, 0.06) 0%, transparent 55%),
+    radial-gradient(ellipse at bottom, rgba(201, 169, 106, 0.03) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Optional subtle grain texture */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ===================================== */
+/* Navigation Styling (Premium Edition) */
+/* ===================================== */
+
+nav,
+.sm-user-ui nav {
+  background: rgba(20, 17, 15, 0.5) !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(201, 169, 106, 0.14) !important;
+}
+
+nav a,
+.sm-user-ui nav a {
+  color: #c9a96a !important;
+  text-decoration: none !important;
+  padding: 10px 15px !important;
+  transition: all 0.3s ease !important;
+  border: 1px solid transparent !important;
+  border-radius: 8px !important;
+  letter-spacing: 0.04em !important;
+  font-weight: 300 !important;
+}
+
+/* Refined hover effect */
+nav a:hover,
+.sm-user-ui nav a:hover {
+  color: #e6cf95 !important;
+  border-color: rgba(201, 169, 106, 0.35) !important;
+  background-color: rgba(255, 255, 255, 0.03) !important;
+  box-shadow:
+    0 0 12px rgba(201, 169, 106, 0.14),
+    0 0 28px rgba(201, 169, 106, 0.08) !important;
+  transform: translateY(-1px) !important;
+}
+
+nav a.active,
+.sm-user-ui nav a.active {
+  color: #e6cf95 !important;
+  font-weight: 400 !important;
+  background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* ===================================== */
+/* Top Link Styling                      */
+/* ===================================== */
+
+.nav-toplink {
+  color: #f4ede4 !important;
+  text-decoration: none !important;
+  padding: 10px 20px !important;
+  transition: all 0.3s ease !important;
+  border: 1px solid transparent !important;
+  border-radius: 8px !important;
+  letter-spacing: 0.04em !important;
+}
+
+.nav-toplink:hover {
+  color: #e6cf95 !important;
+  border-color: rgba(201, 169, 106, 0.35) !important;
+  background-color: rgba(255, 255, 255, 0.03) !important;
+  box-shadow:
+    0 0 10px rgba(201, 169, 106, 0.12),
+    0 0 22px rgba(201, 169, 106, 0.06) !important;
+}
+
+/* ===================================== */
+/* Smooth Carousel Scroll                */
+/* ===================================== */
+
+.sm-component-carousel-scroll {
+  scroll-behavior: smooth !important;
+  padding-bottom: 6px !important;
+}
+
+/* ===================================== */
+/* Premium Gallery Carousel Styling      */
+/* ===================================== */
+
+/* Image tile wrapper - refined cards */
+.sm-component-carousel-image-list > div {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  margin-right: 10px !important;
+  background: rgba(255, 255, 255, 0.018) !important;
+  border: 1px solid rgba(201, 169, 106, 0.14) !important;
+  transition: all 500ms cubic-bezier(0.2, 0.7, 0.2, 1) !important;
+}
+
+/* Base image styling - subtle initial state */
+.sm-component-carousel-image-list img {
+  border-radius: 16px !important;
+  opacity: 0.85 !important;
+  transition: all 500ms ease !important;
+  filter: saturate(0.95) contrast(1.02) brightness(0.98) !important;
+}
+
+/* Hover on wrapper - elegant elevation */
+.sm-component-carousel-image-list > div:hover {
+  background-color: rgba(255, 255, 255, 0.028) !important;
+  border-color: rgba(201, 169, 106, 0.35) !important;
+  transform: translateY(-4px) !important;
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(201, 169, 106, 0.1) inset,
+    0 0 40px -10px rgba(201, 169, 106, 0.2) !important;
+}
+
+/* Image hover - refined, not flashy */
+.sm-component-carousel-image-list img:hover {
+  opacity: 1 !important;
+  filter: saturate(1.0) contrast(1.05) brightness(1.01) !important;
+}
+
+/* Active slide - subtle highlight */
+.sm-component-carousel-image-enter-done,
+.sm-component-carousel-image-list > div.sm-active {
+  opacity: 1 !important;
+  border-color: rgba(201, 169, 106, 0.25) !important;
+  outline: 1px solid rgba(255, 255, 255, 0.08) !important;
+  outline-offset: -1px !important;
+}
+
+.sm-component-carousel-image-enter-done img {
+  opacity: 1 !important;
+  filter: saturate(1.02) contrast(1.06) brightness(1.0) !important;
+}
+
+/* ===================================== */
+/* Gallery Grid View Styling             */
+/* ===================================== */
+
+.sm-tiles-list,
+.sm-gallery-tiles {
+  gap: 16px !important;
+}
+
+.sm-tile,
+.sm-gallery-cover {
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  background: rgba(255, 255, 255, 0.018) !important;
+  border: 1px solid rgba(201, 169, 106, 0.12) !important;
+  transition: all 400ms cubic-bezier(0.2, 0.7, 0.2, 1) !important;
+}
+
+.sm-tile:hover,
+.sm-gallery-cover:hover {
+  border-color: rgba(201, 169, 106, 0.3) !important;
+  transform: translateY(-4px) !important;
+  box-shadow:
+    0 16px 36px rgba(0, 0, 0, 0.35),
+    0 0 30px -8px rgba(201, 169, 106, 0.18) !important;
+}
+
+.sm-tile img,
+.sm-gallery-cover img {
+  transition: all 400ms ease !important;
+  opacity: 0.88 !important;
+}
+
+.sm-tile:hover img,
+.sm-gallery-cover:hover img {
+  opacity: 1 !important;
+  filter: saturate(1.02) contrast(1.04) !important;
+}
+
+/* ===================================== */
+/* Content Panel Polish                  */
+/* ===================================== */
+
+.sm-page-layout,
+.sm-page-content,
+.sm-user-ui .sm-page-content {
+  background-color: transparent !important;
+}
+
+.sm-page-widget-content,
+.sm-user-ui .sm-page-widget {
+  background: rgba(20, 17, 15, 0.4) !important;
+  border: 1px solid rgba(201, 169, 106, 0.12) !important;
+  border-radius: 12px !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+/* ===================================== */
+/* Typography & Text Polish              */
+/* ===================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  color: #f7f2e8 !important;
+  letter-spacing: 0.03em !important;
+  line-height: 1.2 !important;
+  font-weight: 300 !important;
+}
+
+h1 {
+  font-size: clamp(2rem, 4vw, 3rem) !important;
+}
+
+h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem) !important;
+}
+
+p, li, span {
+  color: #c9c0b4 !important;
+  letter-spacing: 0.02em !important;
+  line-height: 1.7 !important;
+}
+
+/* Secondary text */
+.sm-muted,
+.sm-page-login-link,
+.sm-user-ui .sm-page-widget-description {
+  color: #847d72 !important;
+  opacity: 0.85 !important;
+}
+
+/* ===================================== */
+/* Links & Buttons                       */
+/* ===================================== */
+
+a {
+  color: #c9a96a !important;
+  transition: all 0.25s ease !important;
+  text-decoration: none !important;
+}
+
+a:hover {
+  color: #e6cf95 !important;
+  opacity: 1 !important;
+}
+
+button,
+.sm-button,
+.sm-user-ui button {
+  background: transparent !important;
+  color: #f4ede4 !important;
+  border: 1px solid #c9a96a !important;
+  border-radius: 8px !important;
+  padding: 12px 24px !important;
+  letter-spacing: 0.15em !important;
+  text-transform: uppercase !important;
+  font-size: 0.75rem !important;
+  font-weight: 400 !important;
+  transition: all 0.4s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+button:hover,
+.sm-button:hover,
+.sm-user-ui button:hover {
+  color: #0a0908 !important;
+  border-color: #e6cf95 !important;
+  background: linear-gradient(135deg, #e6cf95, #c9a96a, #8a7340) !important;
+  box-shadow:
+    0 8px 24px rgba(201, 169, 106, 0.3),
+    0 0 0 1px rgba(201, 169, 106, 0.2) inset !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ===================================== */
+/* Luxury Divider Feel                   */
+/* ===================================== */
+
+hr {
+  border: none !important;
+  height: 1px !important;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(201, 169, 106, 0.28) 50%,
+    rgba(255, 255, 255, 0) 100%
+  ) !important;
+  margin: 40px 0 !important;
+}
+
+/* ===================================== */
+/* Folder/Album Titles                   */
+/* ===================================== */
+
+.sm-folder-name,
+.sm-gallery-name,
+.sm-page-title {
+  color: #f7f2e8 !important;
+  letter-spacing: 0.04em !important;
+  font-weight: 300 !important;
+}
+
+/* ===================================== */
+/* Breadcrumb Navigation                 */
+/* ===================================== */
+
+.sm-breadcrumb,
+.sm-user-ui .sm-breadcrumb {
+  color: #847d72 !important;
+}
+
+.sm-breadcrumb a,
+.sm-user-ui .sm-breadcrumb a {
+  color: #c9a96a !important;
+  transition: color 0.25s ease !important;
+}
+
+.sm-breadcrumb a:hover,
+.sm-user-ui .sm-breadcrumb a:hover {
+  color: #e6cf95 !important;
+}
+
+/* ===================================== */
+/* Search & Input Fields                 */
+/* ===================================== */
+
+input,
+textarea,
+select,
+.sm-input {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(201, 169, 106, 0.2) !important;
+  color: #f4ede4 !important;
+  border-radius: 8px !important;
+  padding: 12px 16px !important;
+  transition: all 0.3s ease !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+.sm-input:focus {
+  outline: none !important;
+  border-color: #c9a96a !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  box-shadow: 0 0 0 3px rgba(201, 169, 106, 0.1) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #847d72 !important;
+  opacity: 0.7 !important;
+}
+
+/* ===================================== */
+/* Lightbox/Photo View                   */
+/* ===================================== */
+
+.sm-lightbox,
+.sm-lightbox-basic {
+  background: rgba(10, 9, 8, 0.96) !important;
+  backdrop-filter: blur(20px) !important;
+}
+
+.sm-lightbox-image {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* ===================================== */
+/* Footer Styling                        */
+/* ===================================== */
+
+footer,
+.sm-page-footer,
+.sm-user-ui footer {
+  background: rgba(20, 17, 15, 0.6) !important;
+  border-top: 1px solid rgba(201, 169, 106, 0.14) !important;
+  padding: 40px 20px !important;
+  text-align: center !important;
+}
+
+footer a,
+.sm-page-footer a {
+  color: #847d72 !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
+  font-size: 0.7rem !important;
+  transition: color 0.25s ease !important;
+}
+
+footer a:hover,
+.sm-page-footer a:hover {
+  color: #c9a96a !important;
+}
+
+/* ===================================== */
+/* Loading Spinner                       */
+/* ===================================== */
+
+.sm-spinner {
+  border-color: rgba(201, 169, 106, 0.2) !important;
+  border-top-color: #c9a96a !important;
+}
+
+/* ===================================== */
+/* Scroll Behavior                       */
+/* ===================================== */
+
+html {
+  scroll-behavior: smooth !important;
+}
+
+/* Custom Scrollbar (WebKit browsers) */
+::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(20, 17, 15, 0.4) !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(201, 169, 106, 0.3) !important;
+  border-radius: 4px !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(201, 169, 106, 0.5) !important;
+}
+
+/* ===================================== */
+/* Reduced Motion Accessibility          */
+/* ===================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===================================== */
+/* Mobile Optimizations                  */
+/* ===================================== */
+
+@media (max-width: 768px) {
+  nav a,
+  .sm-user-ui nav a {
+    padding: 8px 12px !important;
+    font-size: 0.9rem !important;
+  }
+
+  .sm-component-carousel-image-list > div {
+    margin-right: 8px !important;
+  }
+
+  button,
+  .sm-button {
+    padding: 10px 20px !important;
+    font-size: 0.7rem !important;
+  }
+}

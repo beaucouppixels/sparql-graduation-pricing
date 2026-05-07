@@ -1,0 +1,108 @@
+/* ===================================================================== */
+/* SPARQL PHOTOGRAPHY - DASHBOARD HOMEPAGE STYLING                       */
+/* Focused on the homepage view that visitors see                        */
+/* ===================================================================== */
+
+/* ===================================== */
+/* Target the actual public site        */
+/* (Not the dashboard admin view)       */
+/* ===================================== */
+
+/* Override SmugMug's default background */
+body {
+  background: #0a0908 !important;
+  color: #f4ede4 !important;
+}
+
+/* Welcome header text */
+h1, h2 {
+  color: #f7f2e8 !important;
+  letter-spacing: 0.03em !important;
+}
+
+/* Recent Galleries section */
+.sm-user-ui-container,
+.sm-page-widget-galleries {
+  background: rgba(20, 17, 15, 0.6) !important;
+  border: 1px solid rgba(201, 169, 106, 0.12) !important;
+  border-radius: 12px !important;
+}
+
+/* Gallery cards styling */
+.sm-gallery-card,
+.sm-tile-content {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border: 1px solid rgba(201, 169, 106, 0.14) !important;
+  border-radius: 12px !important;
+  transition: all 400ms ease !important;
+}
+
+.sm-gallery-card:hover,
+.sm-tile-content:hover {
+  border-color: rgba(201, 169, 106, 0.35) !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* Gallery images */
+.sm-gallery-card img,
+.sm-tile-image img {
+  border-radius: 8px !important;
+  opacity: 0.88 !important;
+  transition: opacity 400ms ease !important;
+}
+
+.sm-gallery-card:hover img,
+.sm-tile-image:hover img {
+  opacity: 1 !important;
+}
+
+/* Gallery titles and text */
+.sm-gallery-card-title,
+.sm-tile-title {
+  color: #f7f2e8 !important;
+  letter-spacing: 0.03em !important;
+}
+
+.sm-gallery-card-info,
+.sm-tile-description {
+  color: #c9c0b4 !important;
+}
+
+/* "VIEW ALL GALLERIES" link (currently green) */
+a,
+.sm-button-link {
+  color: #c9a96a !important;
+  transition: color 0.25s ease !important;
+  text-decoration: none !important;
+}
+
+a:hover,
+.sm-button-link:hover {
+  color: #e6cf95 !important;
+}
+
+/* Change green accent to gold */
+.sm-user-ui-accent,
+[class*="accent"] {
+  color: #c9a96a !important;
+}
+
+/* Buttons */
+button,
+.sm-button {
+  background: transparent !important;
+  color: #f4ede4 !important;
+  border: 1px solid #c9a96a !important;
+  border-radius: 8px !important;
+  padding: 12px 24px !important;
+  letter-spacing: 0.1em !important;
+  transition: all 0.3s ease !important;
+}
+
+button:hover,
+.sm-button:hover {
+  background: linear-gradient(135deg, #e6cf95, #c9a96a, #8a7340) !important;
+  border-color: #e6cf95 !important;
+  color: #0a0908 !important;
+}

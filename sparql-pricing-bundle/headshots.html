@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Sparql Photography — Graduation Session Pricing</title>
+<title>Sparql Photography — Headshot Pricing</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@200;300;400;500;600&family=Italiana&family=Nunito+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -41,7 +41,6 @@
     min-height: 100vh;
   }
 
-  /* Subtle radial vignette + grain on body */
   body::before {
     content: "";
     position: fixed;
@@ -64,30 +63,66 @@
   }
 
   .container {
-    max-width: 1400px;
+    max-width: 1180px;
     margin: 0 auto;
     padding: 0 32px;
     position: relative;
     z-index: 2;
   }
 
-  /* ---------- Logo ---------- */
-  .logo-container {
-    text-align: center;
-    margin-bottom: 60px;
-    opacity: 0;
-    animation: fadeInUp 1s ease-out 0s forwards;
+  /* ---------- Top Nav ---------- */
+  .top-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10, 9, 8, 0.55);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--rule);
+    transition: background 0.4s ease, border-color 0.4s ease;
   }
-  .logo {
-    max-width: 700px;
-    width: 100%;
-    height: auto;
-    filter: drop-shadow(0 8px 35px rgba(201, 169, 106, 0.5));
-    transition: transform 0.6s ease, filter 0.6s ease;
+  .top-nav-inner {
+    max-width: 1240px; margin: 0 auto;
+    padding: 14px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px;
   }
-  .logo:hover {
-    transform: scale(1.02);
-    filter: drop-shadow(0 10px 50px rgba(201, 169, 106, 0.7));
+  .top-nav-brand {
+    font-family: 'Italiana', serif;
+    font-size: 0.95rem; letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink); text-decoration: none;
+    white-space: nowrap;
+    transition: opacity 0.4s ease;
+  }
+  .top-nav-brand:hover { opacity: 0.85; }
+  .nav-logo { height: 40px; width: auto; filter: drop-shadow(0 2px 8px rgba(201,169,106,0.3)); transition: transform 0.3s ease; }
+  .nav-logo:hover { transform: scale(1.05); }
+  .top-nav-brand .accent {
+    color: var(--gold); font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400; letter-spacing: 0.05em;
+    margin-right: 4px;
+  }
+  .top-nav-links {
+    display: flex; gap: 26px; flex-wrap: wrap; justify-content: flex-end;
+  }
+  .top-nav-links a {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem; letter-spacing: 0.32em;
+    text-transform: uppercase; color: var(--ink-soft);
+    text-decoration: none; padding: 4px 0;
+    border-bottom: 1px solid transparent;
+    transition: color 0.4s ease, border-color 0.4s ease;
+  }
+  .top-nav-links a:hover { color: var(--gold); }
+  .top-nav-links a.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+  @media (max-width: 720px) {
+    .top-nav-inner { padding: 12px 22px; gap: 12px; flex-wrap: wrap; }
+    .top-nav-brand { font-size: 0.78rem; letter-spacing: 0.22em; }
+    .top-nav-links { gap: 14px; }
+    .top-nav-links a { font-size: 0.58rem; letter-spacing: 0.22em; }
   }
 
   /* ---------- Hero ---------- */
@@ -98,7 +133,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 120px 32px 80px;
+    padding: 140px 32px 140px;
     position: relative;
   }
 
@@ -117,6 +152,21 @@
     letter-spacing: 0.05em;
     font-family: 'Cormorant Garamond', serif;
     font-weight: 400;
+  }
+  .logo-container {
+    text-align: center;
+    margin-bottom: 60px;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 0s forwards;
+    will-change: transform, opacity;
+  }
+  .logo {
+    max-width: 700px;
+    width: 100%;
+    height: auto;
+  }
+  .logo:hover {
+    transform: scale(1.02);
   }
   .brand-tag {
     font-size: 0.7rem;
@@ -259,7 +309,7 @@
   /* ---------- Package Cards ---------- */
   .packages-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 28px;
   }
 
@@ -286,7 +336,6 @@
   .package:nth-child(3).in-view { animation-delay: 0.31s; }
   .package:nth-child(4).in-view { animation-delay: 0.44s; }
 
-  /* Subtle gold border-glow on hover */
   .package::before {
     content: "";
     position: absolute;
@@ -314,7 +363,6 @@
   }
   .package:hover::before { opacity: 1; }
 
-  /* Featured (Most Popular) */
   .package.featured {
     border-color: rgba(201, 169, 106, 0.3);
     background: linear-gradient(180deg,
@@ -459,7 +507,7 @@
   }
   .addons-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(5, 1fr);
     gap: 0;
     border-top: 1px solid var(--rule);
     border-left: 1px solid var(--rule);
@@ -790,7 +838,6 @@
     50% { transform: translateX(-50%) translateY(-8px); }
   }
 
-  /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
       animation-duration: 0.01ms !important;
@@ -800,54 +847,44 @@
     .package, .addon { opacity: 1; transform: none; }
   }
 
-  /* ---------- Responsive ---------- */
-  @media (max-width: 1200px) {
-    .packages-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  
   @media (max-width: 720px) {
-    .hero { padding: 80px 24px 60px; }
+    .hero { padding: 120px 24px 60px; }
     .container { padding: 0 22px; }
     section.packages, section.addons, section.cta { padding: 70px 0; }
     .section-head { margin-bottom: 50px; }
     .package { padding: 44px 28px 32px; }
     .brand-tag { margin-bottom: 50px; }
     .logo { max-width: 380px; }
-    .packages-grid {
-      grid-template-columns: 1fr;
-    }
-    .modal {
-      padding: 40px 28px 35px;
-      max-height: 90vh;
-      overflow-y: auto;
-    }
-    .modal h3 {
-      font-size: 1.8rem;
-    }
-    .form-row {
-      grid-template-columns: 1fr;
-      gap: 22px;
-    }
   }
 </style>
 </head>
 <body>
 
+  <!-- TOP NAV -->
+  <nav class="top-nav" aria-label="Pricing categories">
+    <div class="top-nav-inner">
+      <a href="index.html" class="top-nav-brand"><img src="Logo.png" alt="Sparql Photography" class="nav-logo" /></a>
+      <div class="top-nav-links">
+        <a href="index.html">Overview</a>
+        <a href="graduation.html">Graduation</a>
+        <a href="seniors.html">Senior</a>
+        <a href="headshots.html" class="active">Headshots</a>
+      </div>
+    </div>
+  </nav>
+
   <!-- HERO -->
   <header class="hero">
     <div class="logo-container">
-      <a href="https://www.sparqlphotography.com" target="_blank" rel="noopener noreferrer">
-        <img src="Logo.png" alt="Sparql Photography Logo" class="logo" />
-      </a>
+      <img src="Logo.png" alt="Sparql Photography Logo" class="logo" />
     </div>
+    <div class="brand-tag">Visual Stories · Curated</div>
 
     <div class="hero-divider"></div>
 
     <div class="eyebrow">The Collection · 2026</div>
-    <h1 class="title">Graduation <em>Sessions</em></h1>
-    <p class="tagline">The work is done. Now, the portrait.</p>
+    <h1 class="title">Professional <em>Headshots</em></h1>
+    <p class="tagline">A first impression, refined.</p>
 
     <div class="scroll-cue">Explore</div>
   </header>
@@ -868,61 +905,49 @@
       <div class="packages-grid">
 
         <article class="package reveal">
-          <h3>Cap &amp; Gown Mini</h3>
-          <p class="price"><span class="currency">$</span>200</p>
+          <h3>Basic</h3>
+          <p class="price"><span class="currency">$</span>175</p>
           <p class="price-note">Per Session</p>
           <div class="divider"></div>
           <ul class="features">
             <li>20-minute session</li>
-            <li>1 location · on or near campus</li>
-            <li>5 hand-edited photographs</li>
-            <li>Delivery in 48–72 hours</li>
+            <li>1 background · 1 outfit</li>
+            <li>3 hand-edited photographs</li>
+            <li>Online gallery delivery</li>
           </ul>
-          <a class="cta-link" href="#book" data-package="Cap &amp; Gown Mini">Reserve</a>
+          <a class="cta-link" href="#book" data-package="Basic">Reserve</a>
         </article>
 
         <article class="package featured reveal">
           <span class="badge">Most Loved</span>
-          <h3>Graduate Signature</h3>
-          <p class="price"><span class="currency">$</span>400</p>
+          <h3>Standard</h3>
+          <p class="price"><span class="currency">$</span>275</p>
           <p class="price-note">Per Session</p>
           <div class="divider"></div>
           <ul class="features">
-            <li>45–60 minute session</li>
-            <li>2 locations or outfit changes</li>
-            <li>12–15 hand-edited photographs</li>
-            <li>48-hour sneak peek</li>
-            <li>Full delivery in 5–7 days</li>
+            <li>40-minute session</li>
+            <li>2 backgrounds · 2 outfits</li>
+            <li>6 hand-edited photographs</li>
+            <li>LinkedIn-ready crops included</li>
+            <li>Online gallery delivery</li>
           </ul>
-          <a class="cta-link" href="#book" data-package="Graduate Signature">Reserve</a>
+          <a class="cta-link" href="#book" data-package="Standard">Reserve</a>
         </article>
 
         <article class="package reveal">
-          <h3>Elite Experience</h3>
-          <p class="price"><span class="currency">$</span>750</p>
+          <h3>Deluxe</h3>
+          <p class="price"><span class="currency">$</span>425</p>
           <p class="price-note">Per Session</p>
           <div class="divider"></div>
           <ul class="features">
-            <li>90-minute session</li>
-            <li>Multiple curated locations</li>
-            <li>25+ hand-edited photographs</li>
-            <li>Full gallery included</li>
+            <li>60-minute session</li>
+            <li>Multiple backgrounds &amp; outfits</li>
+            <li>10 hand-edited photographs</li>
+            <li>Posing &amp; expression coaching</li>
+            <li>LinkedIn-ready crops included</li>
             <li>Priority editing</li>
           </ul>
-          <a class="cta-link" href="#book" data-package="Elite Experience">Reserve</a>
-        </article>
-
-        <article class="package reveal">
-          <h3>Squad Session</h3>
-          <p class="price"><span class="currency">$</span>125<span class="unit">/ person</span></p>
-          <p class="price-note">3–6 Graduates</p>
-          <div class="divider"></div>
-          <ul class="features">
-            <li>3–6 people</li>
-            <li>Individual + group portraits</li>
-            <li>8 hand-edited photos per person</li>
-          </ul>
-          <a class="cta-link" href="#book" data-package="Squad Session">Reserve</a>
+          <a class="cta-link" href="#book" data-package="Deluxe">Reserve</a>
         </article>
 
       </div>
@@ -946,12 +971,12 @@
         <div class="addon reveal">
           <div class="addon-label">01</div>
           <div class="addon-name">Extra<br>Photographs</div>
-          <div class="addon-price">$10–$20 each</div>
+          <div class="addon-price">$25 each</div>
         </div>
         <div class="addon reveal">
           <div class="addon-label">02</div>
           <div class="addon-name">Full<br>Gallery</div>
-          <div class="addon-price">$75–$150</div>
+          <div class="addon-price">$100–$150</div>
         </div>
         <div class="addon reveal">
           <div class="addon-label">03</div>
@@ -960,13 +985,13 @@
         </div>
         <div class="addon reveal">
           <div class="addon-label">04</div>
-          <div class="addon-name">Golden<br>Hour</div>
-          <div class="addon-price">$50–$100</div>
+          <div class="addon-name">Additional<br>Outfit</div>
+          <div class="addon-price">$30</div>
         </div>
         <div class="addon reveal">
           <div class="addon-label">05</div>
-          <div class="addon-name">Additional<br>Person</div>
-          <div class="addon-price">$25–$50</div>
+          <div class="addon-name">Team / Group<br>Pricing</div>
+          <div class="addon-price">By Quote</div>
         </div>
       </div>
     </div>
@@ -975,8 +1000,8 @@
   <!-- CTA -->
   <section class="cta" id="book">
     <div class="container">
-      <h2>Your moment, <em>immortalized</em>.</h2>
-      <p>Limited dates available throughout graduation season. Reserve your session and step into the frame.</p>
+      <h2>Your professional self, <em>refined</em>.</h2>
+      <p>Book a single session or a recurring schedule for your team. Step into the frame, and into the room.</p>
       <a href="#book" class="btn-luxe" id="openModal">Book Your Session</a>
     </div>
   </section>
@@ -1014,10 +1039,9 @@
           <label for="package">Desired Package</label>
           <select id="package" name="package" required>
             <option value="">Select a package</option>
-            <option value="Cap & Gown Mini">Cap & Gown Mini — $200</option>
-            <option value="Graduate Signature">Graduate Signature — $400</option>
-            <option value="Elite Experience">Elite Experience — $750</option>
-            <option value="Squad Session">Squad Session — $125/person</option>
+            <option value="Basic">Basic — $175</option>
+            <option value="Standard">Standard — $275</option>
+            <option value="Deluxe">Deluxe — $425</option>
           </select>
         </div>
 

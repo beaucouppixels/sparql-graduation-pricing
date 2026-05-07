@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sparql Photography — Pricing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@200;300;400;500;600&family=Italiana&family=Nunito+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preload" href="Logo.png" as="image">
+<style>
+  /* ============= SHARED FOUNDATIONS ============= */
+  :root {
+    --bg-deep: #0a0908;
+    --bg-soft: #14110f;
+    --ink: #f4ede4;
+    --ink-soft: #c9c0b4;
+    --ink-muted: #847d72;
+    --gold: #c9a96a;
+    --gold-light: #e6cf95;
+    --gold-deep: #8a7340;
+    --rule: rgba(201, 169, 106, 0.18);
+    --card: rgba(255, 255, 255, 0.018);
+    --card-border: rgba(201, 169, 106, 0.14);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg-deep);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    min-height: 100vh;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background:
+      radial-gradient(ellipse at top, rgba(201,169,106,0.06) 0%, transparent 55%),
+      radial-gradient(ellipse at bottom, rgba(201,169,106,0.03) 0%, transparent 60%);
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: ""; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.5; mix-blend-mode: overlay;
+    pointer-events: none; z-index: 1;
+  }
+  .container {
+    max-width: 1180px; margin: 0 auto; padding: 0 32px;
+    position: relative; z-index: 2;
+  }
+
+  /* ============= TOP NAV (shared across all pricing pages) ============= */
+  .top-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10, 9, 8, 0.55);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--rule);
+    transition: background 0.4s ease, border-color 0.4s ease;
+  }
+  .top-nav-inner {
+    max-width: 1240px; margin: 0 auto;
+    padding: 14px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px;
+  }
+  .top-nav-brand {
+    font-family: 'Italiana', serif;
+    font-size: 0.95rem; letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink); text-decoration: none;
+    white-space: nowrap;
+    transition: opacity 0.4s ease;
+  }
+  .top-nav-brand:hover { opacity: 0.85; }
+  .nav-logo { height: 40px; width: auto; filter: drop-shadow(0 2px 8px rgba(201,169,106,0.3)); transition: transform 0.3s ease; }
+  .nav-logo:hover { transform: scale(1.05); }
+  .top-nav-brand .accent {
+    color: var(--gold); font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400; letter-spacing: 0.05em;
+    margin-right: 4px;
+  }
+  .top-nav-links {
+    display: flex; gap: 26px; flex-wrap: wrap; justify-content: flex-end;
+  }
+  .top-nav-links a {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem; letter-spacing: 0.32em;
+    text-transform: uppercase; color: var(--ink-soft);
+    text-decoration: none; padding: 4px 0;
+    border-bottom: 1px solid transparent;
+    transition: color 0.4s ease, border-color 0.4s ease;
+  }
+  .top-nav-links a:hover { color: var(--gold); }
+  .top-nav-links a.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+  @media (max-width: 720px) {
+    .top-nav-inner { padding: 12px 22px; gap: 12px; flex-wrap: wrap; }
+    .top-nav-brand { font-size: 0.78rem; letter-spacing: 0.22em; }
+    .top-nav-links { gap: 14px; }
+    .top-nav-links a { font-size: 0.58rem; letter-spacing: 0.22em; }
+  }
+
+  /* ============= HERO ============= */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    text-align: center;
+    padding: 140px 32px 140px;
+    position: relative;
+  }
+  .brand-mark {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    letter-spacing: 0.4em;
+    color: var(--ink);
+    margin-bottom: 8px;
+    opacity: 0;
+    animation: fadeInUp 1.2s ease-out 0.2s forwards;
+  }
+  .brand-mark .accent {
+    color: var(--gold); font-style: italic;
+    letter-spacing: 0.05em;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+  }
+  .logo-container {
+    text-align: center;
+    margin-bottom: 60px;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 0.3s forwards;
+  }
+  .logo-container a {
+    display: inline-block;
+    filter: drop-shadow(0 8px 35px rgba(201, 169, 106, 0.5));
+  }
+  .logo-container a:hover {
+    filter: drop-shadow(0 10px 50px rgba(201, 169, 106, 0.7));
+  }
+  .logo {
+    max-width: 700px;
+    width: 100%;
+    height: auto;
+  }
+  .logo:hover {
+    transform: scale(1.02);
+  }
+  .brand-tag {
+    font-size: 0.7rem; letter-spacing: 0.55em;
+    color: var(--ink-muted); text-transform: uppercase;
+    margin-bottom: 80px;
+    opacity: 0;
+    animation: fadeInUp 1.2s ease-out 0.4s forwards;
+  }
+  .hero-divider {
+    width: 1px; height: 70px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    margin: 0 auto 40px;
+    opacity: 0;
+    animation: heroLine 1.6s ease-out 0.5s forwards;
+  }
+  .eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.5em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 28px; opacity: 0;
+    animation: fadeInUp 1.2s ease-out 0.7s forwards;
+  }
+  h1.title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2.6rem, 6.5vw, 5.4rem);
+    letter-spacing: 0.01em; line-height: 1.05;
+    margin-bottom: 28px;
+    opacity: 0;
+    background: linear-gradient(120deg,
+      var(--ink) 0%, var(--ink) 35%,
+      var(--gold-light) 50%,
+      var(--ink) 65%, var(--ink) 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation:
+      fadeInUp 1.4s ease-out 0.9s forwards,
+      shimmer 7s ease-in-out 2.4s infinite;
+  }
+  h1.title em {
+    font-style: italic; font-weight: 400;
+    color: var(--gold);
+    -webkit-text-fill-color: var(--gold);
+  }
+  .tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-weight: 300;
+    font-size: clamp(1.15rem, 2vw, 1.45rem);
+    color: var(--ink-soft);
+    letter-spacing: 0.04em;
+    max-width: 600px; margin: 0 auto;
+    opacity: 0;
+    animation: fadeInUp 1.4s ease-out 1.2s forwards;
+  }
+  .scroll-cue {
+    position: absolute; bottom: 60px; left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.65rem; letter-spacing: 0.4em;
+    text-transform: uppercase; color: var(--ink-soft);
+    opacity: 0;
+    animation: fadeIn 2s ease-out 2s forwards, float 3s ease-in-out 3s infinite;
+    z-index: 10;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+  }
+  .scroll-cue::after {
+    content: ""; display: block;
+    width: 1px; height: 30px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    margin: 14px auto 0;
+    box-shadow: 0 0 8px rgba(201, 169, 106, 0.6);
+  }
+
+  /* ============= SECTION FRAME ============= */
+  section.collections, section.cta {
+    padding: 100px 0;
+    position: relative;
+  }
+  .section-head {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+  .section-head .eyebrow { animation: none; opacity: 1; }
+  .section-head h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: 0.02em; margin-top: 16px;
+  }
+  .section-head h2 em { font-style: italic; color: var(--gold); }
+  .ornament {
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 24px; gap: 14px;
+  }
+  .ornament .line {
+    width: 60px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+  .ornament .diamond {
+    width: 6px; height: 6px; background: var(--gold);
+    transform: rotate(45deg);
+    box-shadow: 0 0 10px rgba(201, 169, 106, 0.6);
+  }
+
+  /* ============= COLLECTION CARDS (HUB) ============= */
+  .collections-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+  }
+  .collection-card {
+    position: relative;
+    display: flex; flex-direction: column;
+    padding: 56px 40px 44px;
+    border: 1px solid var(--card-border);
+    background: linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.002));
+    text-decoration: none; color: inherit;
+    overflow: hidden;
+    transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1),
+                border-color 0.6s ease,
+                box-shadow 0.6s ease;
+    opacity: 0; transform: translateY(40px);
+    min-height: 360px;
+  }
+  .collection-card.in-view { animation: fadeInUp 1s ease-out forwards; }
+  .collection-card:nth-child(1).in-view { animation-delay: 0.05s; }
+  .collection-card:nth-child(2).in-view { animation-delay: 0.18s; }
+  .collection-card:nth-child(3).in-view { animation-delay: 0.31s; }
+  .collection-card:nth-child(4).in-view { animation-delay: 0.44s; }
+  .collection-card:nth-child(5).in-view { animation-delay: 0.57s; }
+  .collection-card::before {
+    content: ""; position: absolute; inset: 0;
+    border: 1px solid transparent;
+    background: linear-gradient(135deg,
+      rgba(201, 169, 106, 0.4),
+      transparent 30%, transparent 70%,
+      rgba(201, 169, 106, 0.4)) border-box;
+    -webkit-mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    opacity: 0; transition: opacity 0.6s ease;
+    pointer-events: none;
+  }
+  .collection-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(201, 169, 106, 0.45);
+    box-shadow:
+      0 30px 60px -20px rgba(0,0,0,0.6),
+      0 0 0 1px rgba(201, 169, 106, 0.05),
+      0 0 40px -10px rgba(201, 169, 106, 0.25);
+  }
+  .collection-card:hover::before { opacity: 1; }
+
+  .collection-card .index {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem; letter-spacing: 0.4em;
+    text-transform: uppercase; color: var(--ink-muted);
+    margin-bottom: 28px;
+  }
+  .collection-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(1.8rem, 3vw, 2.2rem);
+    letter-spacing: 0.01em;
+    line-height: 1.15; margin-bottom: 14px;
+  }
+  .collection-card h3 em {
+    font-style: italic; color: var(--gold);
+  }
+  .collection-card .desc {
+    color: var(--ink-soft);
+    font-family: 'Avenir Book', 'AvenirNext-Regular', 'Avenir Next', Avenir,
+                 'Nunito Sans', system-ui, -apple-system, sans-serif;
+    font-weight: 400;
+    font-size: 0.95rem;
+    margin-bottom: 36px;
+    flex-grow: 1;
+  }
+  .collection-card .divider {
+    width: 36px; height: 1px;
+    background: var(--gold);
+    margin: 0 0 22px;
+    transition: width 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .collection-card:hover .divider { width: 80px; }
+  .collection-card .meta {
+    display: flex; justify-content: space-between; align-items: baseline;
+    border-top: 1px solid var(--rule);
+    padding-top: 18px;
+  }
+  .collection-card .price-from {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 1.05rem;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+  }
+  .collection-card .price-from .lbl {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.62rem; letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-right: 6px;
+  }
+  .collection-card .arrow {
+    font-family: 'Avenir Book', 'AvenirNext-Regular', 'Avenir Next', Avenir,
+                 'Nunito Sans', system-ui, -apple-system, sans-serif;
+    font-size: 0.72rem; letter-spacing: 0.35em;
+    text-transform: uppercase; color: var(--ink);
+    transition: color 0.4s ease, letter-spacing 0.4s ease;
+  }
+  .collection-card .arrow::after {
+    content: " →"; display: inline-block;
+    transition: transform 0.4s ease;
+  }
+  .collection-card:hover .arrow { color: var(--gold); letter-spacing: 0.45em; }
+  .collection-card:hover .arrow::after { transform: translateX(6px); }
+
+  /* "Coming soon" placeholder card variant for future categories */
+  .collection-card.soon {
+    pointer-events: none;
+    opacity: 0.45;
+  }
+  .collection-card.soon .arrow { color: var(--ink-muted); }
+
+  /* ============= CTA ============= */
+  section.cta {
+    text-align: center;
+    padding: 120px 32px 140px;
+  }
+  .cta h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2rem, 4.5vw, 3.4rem);
+    line-height: 1.15; margin-bottom: 24px;
+    max-width: 720px; margin-left: auto; margin-right: auto;
+  }
+  .cta h2 em { font-style: italic; color: var(--gold); }
+  .cta p {
+    color: var(--ink-soft);
+    font-family: 'Avenir Book', 'AvenirNext-Regular', 'Avenir Next', Avenir,
+                 'Nunito Sans', system-ui, -apple-system, sans-serif;
+    font-size: 1.05rem;
+    max-width: 560px; margin: 0 auto 48px;
+    font-weight: 400;
+  }
+  .btn-luxe {
+    display: inline-block;
+    padding: 22px 56px; background: transparent;
+    color: var(--ink); text-decoration: none;
+    font-family: 'Avenir Book', 'AvenirNext-Regular', 'Avenir Next', Avenir,
+                 'Nunito Sans', system-ui, -apple-system, sans-serif;
+    font-size: 0.72rem; letter-spacing: 0.45em;
+    text-transform: uppercase;
+    border: 1px solid var(--gold);
+    position: relative; overflow: hidden;
+    transition: color 0.5s ease, letter-spacing 0.5s ease;
+    z-index: 1;
+  }
+  .btn-luxe::before {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-deep));
+    transform: translateY(101%);
+    transition: transform 0.6s cubic-bezier(0.7, 0, 0.2, 1);
+    z-index: -1;
+  }
+  .btn-luxe:hover { color: var(--bg-deep); letter-spacing: 0.55em; }
+  .btn-luxe:hover::before { transform: translateY(0); }
+
+  /* ============= FOOTER ============= */
+  footer {
+    text-align: center;
+    padding: 40px 32px 60px;
+    color: var(--ink-muted);
+    font-size: 0.7rem; letter-spacing: 0.4em;
+    text-transform: uppercase;
+    position: relative; z-index: 2;
+  }
+  footer .ornament { margin-bottom: 24px; }
+
+  /* ============= ANIMATIONS ============= */
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn { to { opacity: 1; } }
+  @keyframes heroLine {
+    0% { opacity: 0; height: 0; }
+    100% { opacity: 1; height: 70px; }
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-8px); }
+  }
+  @keyframes logoFlicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
+    20%, 24%, 55% { opacity: 0.4; }
+  }
+  @keyframes logoDissolve {
+    0% { opacity: 0; transform: scale(0.97); }
+    40% { opacity: 0.6; }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  @keyframes logoPop {
+    0% { opacity: 0; transform: scale(0.85); }
+    60% { opacity: 1; transform: scale(1.20); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  @keyframes glowIn {
+    0% { filter: drop-shadow(0 8px 35px rgba(201, 169, 106, 0)); }
+    100% { filter: drop-shadow(0 8px 35px rgba(201, 169, 106, 0.5)); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    .collection-card { opacity: 1; transform: none; }
+  }
+  @media (max-width: 720px) {
+    .hero { padding: 110px 24px 60px; min-height: 80vh; }
+    .container { padding: 0 22px; }
+    section.collections, section.cta { padding: 70px 0; }
+    .section-head { margin-bottom: 50px; }
+    .collection-card { padding: 44px 28px 32px; min-height: auto; }
+    .brand-tag { margin-bottom: 50px; }
+    .logo { max-width: 380px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ============= TOP NAV ============= -->
+  <nav class="top-nav" aria-label="Pricing categories">
+    <div class="top-nav-inner">
+      <a href="index.html" class="top-nav-brand"><img src="Logo.png" alt="Sparql Photography" class="nav-logo" /></a>
+      <div class="top-nav-links">
+        <a href="index.html" class="active">Overview</a>
+        <a href="graduation.html">Graduation</a>
+        <a href="seniors.html">Senior</a>
+        <a href="headshots.html">Headshots</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============= HERO ============= -->
+  <header class="hero">
+    <div class="logo-container">
+      <a href="https://www.sparqlphotography.com" target="_blank" rel="noopener noreferrer">
+        <img src="Logo.png" alt="Sparql Photography Logo" class="logo" />
+      </a>
+    </div>
+    <div class="brand-tag">Visual Stories - Curated</div>
+
+    <div class="hero-divider"></div>
+
+    <div class="eyebrow">The Collection - 2026</div>
+    <h1 class="title">Find your <em>moment</em>.</h1>
+    <p class="tagline">A house style, three (and counting) ways to step into the frame.</p>
+
+    <div class="scroll-cue">Explore</div>
+  </header>
+
+  <!-- ============= COLLECTIONS ============= -->
+  <section class="collections">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Sessions</div>
+        <h2>Pricing by <em>category</em></h2>
+        <div class="ornament">
+          <span class="line"></span>
+          <span class="diamond"></span>
+          <span class="line"></span>
+        </div>
+      </div>
+
+      <div class="collections-grid">
+
+        <a href="graduation.html" class="collection-card reveal">
+          <h3>Graduation <em>Sessions</em></h3>
+          <p class="desc">Cap, gown, campus, golden hour. Capture the milestone with elegance - solo or with the squad.</p>
+          <div class="divider"></div>
+          <div class="meta">
+            <div class="price-from"><span class="lbl">From</span>$125</div>
+            <div class="arrow">View pricing</div>
+          </div>
+        </a>
+
+        <a href="seniors.html" class="collection-card reveal">
+          <h3>Senior <br><em>Portraits</em></h3>
+          <p class="desc">Yearbook-ready and beyond. Outdoor sessions with room for variety, personality, and an album-worthy print.</p>
+          <div class="divider"></div>
+          <div class="meta">
+            <div class="price-from"><span class="lbl">From</span>$375</div>
+            <div class="arrow">View pricing</div>
+          </div>
+        </a>
+
+        <a href="headshots.html" class="collection-card reveal">
+          <h3>Professional <em>Headshots</em></h3>
+          <p class="desc">Clean, confident portraits for your profile, your team, your platform. Quick turnaround, polished result.</p>
+          <div class="divider"></div>
+          <div class="meta">
+            <div class="price-from"><span class="lbl">From</span>$175</div>
+            <div class="arrow">View pricing</div>
+          </div>
+        </a>
+
+        <!-- Future-category placeholder pattern.
+             To add a new category later, copy a card above, change the index/title/desc/price/href,
+             and remove the .soon class. -->
+        <!--
+        <a href="families.html" class="collection-card reveal soon">
+          <div class="index">04 · Families</div>
+          <h3>Family <em>Sessions</em></h3>
+          <p class="desc">Coming soon.</p>
+          <div class="divider"></div>
+          <div class="meta">
+            <div class="price-from"><span class="lbl">From</span>—</div>
+            <div class="arrow">Coming soon</div>
+          </div>
+        </a>
+        -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= CTA ============= -->
+  <section class="cta" id="contact">
+    <div class="container">
+      <h2>Have a different moment in <em>mind</em>?</h2>
+      <p>Weddings, family portraits, brand campaigns, events - if it's worth remembering, it's worth capturing. Reach out for a custom quote.</p>
+      <a href="mailto:photog@sparqlphotography.com" class="btn-luxe">Let's Talk</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="ornament">
+      <span class="line"></span>
+      <span class="diamond"></span>
+      <span class="line"></span>
+    </div>
+    © 2026 Sparql Photography
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+    reveals.forEach((el) => io.observe(el));
+  </script>
+
+</body>
+</html>

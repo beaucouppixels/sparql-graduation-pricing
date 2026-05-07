@@ -1,0 +1,27 @@
+/* SPARQL Photography - Luxury Theme (Compact) */
+.sm-gallery-buymenu{display:none!important}
+body,.sm-page,.sm-page-layout,.sm-user-ui{background:#0a0908!important;color:#f4ede4!important;-webkit-font-smoothing:antialiased!important}
+nav,.sm-user-ui nav{background:rgba(20,17,15,.5)!important;backdrop-filter:blur(12px)!important;border-bottom:1px solid rgba(201,169,106,.14)!important}
+nav a,.sm-user-ui nav a{color:#c9a96a!important;text-decoration:none!important;transition:all .3s ease!important;letter-spacing:.04em!important;font-weight:300!important}
+nav a:hover,.sm-user-ui nav a:hover{color:#e6cf95!important}
+.sm-component-carousel-image-list>div{border-radius:16px!important;overflow:hidden!important;border:1px solid rgba(201,169,106,.14)!important;transition:all 500ms ease!important}
+.sm-component-carousel-image-list img{border-radius:16px!important;opacity:.85!important;transition:all 500ms ease!important}
+.sm-component-carousel-image-list>div:hover{border-color:rgba(201,169,106,.35)!important;transform:translateY(-4px)!important;box-shadow:0 18px 42px rgba(0,0,0,.4)!important}
+.sm-component-carousel-image-list img:hover{opacity:1!important}
+.sm-tile,.sm-gallery-cover{border-radius:12px!important;overflow:hidden!important;border:1px solid rgba(201,169,106,.12)!important;transition:all 400ms ease!important}
+.sm-tile:hover,.sm-gallery-cover:hover{border-color:rgba(201,169,106,.3)!important;transform:translateY(-4px)!important;box-shadow:0 16px 36px rgba(0,0,0,.35)!important}
+.sm-tile img,.sm-gallery-cover img{transition:all 400ms ease!important;opacity:.88!important}
+.sm-tile:hover img,.sm-gallery-cover:hover img{opacity:1!important}
+h1,h2,h3,h4,h5,h6{color:#f7f2e8!important;letter-spacing:.03em!important;font-weight:300!important}
+p,li,span{color:#c9c0b4!important}
+a{color:#c9a96a!important;text-decoration:none!important}
+a:hover{color:#e6cf95!important}
+button,.sm-button{background:transparent!important;color:#f4ede4!important;border:1px solid #c9a96a!important;border-radius:8px!important;letter-spacing:.15em!important;text-transform:uppercase!important;transition:all .4s ease!important}
+button:hover,.sm-button:hover{color:#0a0908!important;background:linear-gradient(135deg,#e6cf95,#c9a96a)!important;border-color:#e6cf95!important}
+footer,.sm-page-footer{background:rgba(20,17,15,.6)!important;border-top:1px solid rgba(201,169,106,.14)!important}
+footer a,.sm-page-footer a{color:#847d72!important}
+footer a:hover,.sm-page-footer a:hover{color:#c9a96a!important}
+input,textarea,select{background:rgba(255,255,255,.03)!important;border:1px solid rgba(201,169,106,.2)!important;color:#f4ede4!important;border-radius:8px!important}
+input:focus,textarea:focus,select:focus{border-color:#c9a96a!important;box-shadow:0 0 0 3px rgba(201,169,106,.1)!important}
+.sm-lightbox{background:rgba(10,9,8,.96)!important}
+hr{border:none!important;height:1px!important;background:linear-gradient(90deg,transparent,rgba(201,169,106,.28),transparent)!important}
